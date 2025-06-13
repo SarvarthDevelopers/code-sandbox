@@ -1,0 +1,20 @@
+.add-note input{
+    border: 1px solid rgb(6, 6, 6);
+    width: 80%;
+    height: 1rem;
+    padding: 0.5rem;
+      
+}
+.add-note button{
+    border: 1px solid black;
+    width: 10%;
+    height: 2rem;
+    /* margin-left: 0.5rem; */
+    border-radius: 0.3rem;
+    background-color: rgb(3, 250, 3);
+}
+.add-note select{
+    height: 2rem;
+     /* margin-left: 0.5rem; */
+      border: 1px solid black;
+}
