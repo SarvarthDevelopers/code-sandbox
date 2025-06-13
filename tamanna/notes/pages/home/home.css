@@ -1,0 +1,15 @@
+.Home{
+  margin: 0;
+  /* text-align: center; */
+  /* width:100%; */
+  padding: 10px;
+  box-sizing: border-box;
+}
+.Home.light{
+  background-color: white;
+  color: black;
+}
+.Home.dark{
+  background-color: rgb(53, 52, 52);
+  color: rgb(244, 242, 242);
+}
