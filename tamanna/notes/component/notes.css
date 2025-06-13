@@ -1,0 +1,16 @@
+
+/* .high{
+ background-color: rgb(172, 112, 80);
+}
+.mediam{
+ background-color: rgb(196, 206, 132);
+}
+.low{
+ background-color: rgb(89, 155, 73);
+} */
+ .right-corner{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 0.5rem;
+ }
