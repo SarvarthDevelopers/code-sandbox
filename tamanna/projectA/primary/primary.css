@@ -1,0 +1,26 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background-color: #2a32b2;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-size: 18px;
+  font-family: 'Plus Jakarta Sans';
+  transition: background-color 0.3s ease, padding-right 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #2680c2;
+  padding-right: 50px; /* Increase right padding only */
+}
+.icon {
+  font-size: 20px;
+  transition: transform 0.3s ease; /* Add transition */
+}
+
+.btn:hover .icon {
+  transform: translateX(25px); /* Move icon to right */
+}
