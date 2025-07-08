@@ -1,0 +1,32 @@
+
+.Sbtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  /* background-color: #2a32b2;  */
+  color: #2a32b2;
+  border: none;
+  /* border-radius: 50px;  */
+  font-size: 18px;
+  background-color:white;
+  /* font-weight: 300; */
+  /* cursor: pointer; */
+  /* transition: background-color 0.3s ease; */
+  transition: color 0.3s ease;
+   font-family:'Plus Jakarta Sans' ;
+}
+
+.Sbtn:hover {
+  color: #2680c2; /* Hover blue */
+  /* transform: scale(1.05); */
+
+}
+/* Icon styling */
+.Sicon {
+  font-size: 20px;
+   transition: transform 0.3s ease; /* Add transition */
+}
+.Sbtn:hover .Sicon {
+  transform: translateX(11px); /* Move icon to right */
+}
