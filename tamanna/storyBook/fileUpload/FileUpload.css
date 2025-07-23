@@ -1,0 +1,282 @@
+/* Wrapper */
+.file-upload-wrapper {
+  width: 388px;
+  padding: 16px;
+  font-family: 'Inter', sans-serif;
+}
+
+/* ========================
+   Rest & Default States
+=========================== */
+.upload-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px;
+  border: 2px solid #d1d5db;
+  border-radius: 12px;
+  background-color: #FFFFFF;
+  text-align: center;
+  color: #6b7280;
+  gap: 8px;
+}
+.upload-box.default {
+  background-color: #fafafa;
+}
+
+
+
+.upload-box .icon-placeholder {
+  width: 40px;
+  height: 40px;
+  background-color: #e5e7eb;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.upload-box p {
+  margin: 0;
+  font-size: 16px;
+  color: #111827;
+}
+.upload-box p strong{
+  margin: 0;
+  font-size: 16px;
+  color: #0447d8;
+}
+
+.in{
+    height: 6px;
+}
+
+.hidden-input {
+  display: none;
+}
+
+.upload-box {
+  cursor: pointer;
+}
+
+.upload-box span {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+/* ========================
+   Uploading State
+=========================== */
+.upload-item.uploading {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  width: 388px;
+  height: 172px;
+  align-items: center;
+  justify-content: center;
+}
+
+.con1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.con2 {
+  display: flex;
+  justify-content: center;
+  width: 288px;
+  flex-direction: column;
+  height: 172px;
+  gap: 10px;
+}
+
+.con3 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon {
+  height: 32px;
+  width: 32px;
+  background-color: grey;
+  border-radius: 50%;
+}
+
+.file-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.file-info span {
+  font-size: 20px;
+  color: #000000;
+}
+
+.lbl {
+  font-weight: 600;
+  font-size: 22px;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 24px;
+  background: #f1f1f1;
+  border-radius: 999px;
+  overflow: hidden;
+  display: flex;
+}
+
+.bar {
+  height: 100%;
+  background-color: #6366f1;
+  transition: width 0.3s ease;
+  border-radius: 999px;
+}
+
+.caption {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.action {
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  background-color: #f1edfe;
+  color: #6366f1;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 20px;
+}
+
+/* ========================
+   Uploaded State
+=========================== */
+.upload-item.uploaded {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  width: 388px;
+  height: 80px;
+  align-items: center;
+  justify-content: center;
+}
+
+.uploaded-con1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.uploaded-icon {
+  height: 32px;
+  width: 32px;
+  background-color: grey;
+  border-radius: 50%;
+}
+
+.uploaded-con2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 288px;
+  gap: 2px;
+}
+
+.uploaded-file-info span {
+  font-weight: 600;
+  font-size: 20px;
+  color: #000000;
+}
+
+.uploaded-caption {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.uploaded-con3 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.uploaded-action {
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  background-color: #fee2e2;
+  color: #dc2626;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+
+/* ========================
+   Error State (MATCHED TO IMAGE)
+=========================== */
+.upload-item.error {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 16px;
+  width: 388px;
+  height: 80px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  padding: 0 16px;
+  /* border: 1px solid #fca5a5; */
+}
+
+.error-icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.error-icon {
+  height: 32px;
+  width: 32px;
+  background-color: #e5e7eb;
+  border-radius: 50%;
+}
+
+.error-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* gap: 4px; */
+}
+
+.error-content .file-name {
+  font-weight: 600;
+  font-size: 20px;
+  color: #000000;
+}
+
+.error-content .caption.error-text {
+  font-size: 14px;
+  color: #dc2626;
+}
+
+.error-action {
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  background-color: #fef2f2;
+  color: #dc2626;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
