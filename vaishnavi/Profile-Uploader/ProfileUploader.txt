@@ -1,0 +1,125 @@
+import React, { useState } from "react";
+import heic2any from "heic2any";
+import loadImage from "blueimp-load-image";
+import "./ProfileUploader.css";
+
+interface ProfileUploaderProps {
+  initialImage?: string; // Existing profile image (optional)
+  onUpload?: (file: File) => void; // Callback when uploading a new image
+  onRemove?: () => void; // Callback when removing the image
+  maxSizeMB?: number; // Max allowed size, default is 10MB
+}
+
+const ProfileUploader: React.FC<ProfileUploaderProps> = ({
+  initialImage = "",
+  onUpload,
+  onRemove,
+  maxSizeMB = 10,
+}) => {
+  const [profilePic, setProfilePic] = useState<string | null>(initialImage);
+
+  //  Handle image upload (JPG, PNG, HEIC, HEIF)
+  const handleUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (!event.target.files || !event.target.files[0]) return;
+    let file = event.target.files[0];
+
+    //  File size check
+    if (file.size > maxSizeMB * 1024 * 1024) {
+      alert(`Image size must be less than ${maxSizeMB}MB!`);
+      return;
+    }
+
+    try {
+      // Convert HEIC/HEIF to JPEG
+      if (
+        file.type === "image/heic" ||
+        file.type === "image/heif" ||
+        file.name.endsWith(".heic") ||
+        file.name.endsWith(".heif")
+      ) {
+        const convertedBlob = (await heic2any({
+          blob: file,
+          toType: "image/jpeg",
+          quality: 0.9,
+        })) as Blob;
+
+        file = new File([convertedBlob], file.name.replace(/\.(heic|heif)$/i, ".jpg"), {
+          type: "image/jpeg",
+        });
+      }
+
+      //  Fix orientation (works for Samsung/iPhone images)
+      loadImage(
+        file,
+        (result: Event | HTMLImageElement | HTMLCanvasElement) => {
+          if (result instanceof HTMLCanvasElement) {
+            result.toBlob((blob) => {
+              if (!blob) return;
+
+              const rotatedFile = new File([blob], file.name, { type: file.type });
+
+              // ✅ Preview final rotated image
+              const imageURL = URL.createObjectURL(rotatedFile);
+              setProfilePic(imageURL);
+
+              //  Send to parent or backend
+              if (onUpload) onUpload(rotatedFile);
+            }, file.type);
+          } else {
+            alert("Failed to process the image. Please try again.");
+          }
+        },
+        {
+          canvas: true,
+          orientation: true, // auto-fix rotation
+        }
+      );
+    } catch (error) {
+      console.error("Error processing image:", error);
+      alert("Failed to process the image. Please try again.");
+    }
+  };
+
+  //  Handle image removal
+  const handleRemove = () => {
+    setProfilePic(null);
+    if (onRemove) onRemove();
+  };
+
+  return (
+    <div className="profile-uploader">
+      <div className="profile-image">
+        {profilePic ? (
+          <img src={profilePic} alt="Profile" className="profile-pic" />
+        ) : (
+          <div className="placeholder"></div>
+        )}
+      </div>
+
+      <div className="buttons-container">
+        <div className="buttons">
+          <label className="upload-btn">
+            Upload Picture
+            <input
+              type="file"
+              accept="image/png, image/jpeg, image/heic, image/heif"
+              onChange={handleUpload}
+              hidden
+            />
+          </label>
+
+          {profilePic && (
+            <button className="remove-btn" onClick={handleRemove}>
+              <span className="cross-icon">×</span> Remove Picture
+            </button>
+          )}
+        </div>
+        <p className="info-text">
+          Image must be PNG, JPG, HEIC, or HEIF & {maxSizeMB}MB Maximum.
+        </p>
+      </div>
+    </div>
+  );
+};
+
+export default ProfileUploader;
