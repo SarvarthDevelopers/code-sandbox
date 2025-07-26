@@ -1,0 +1,27 @@
+import React from "react";
+import ProfileUploader from "./ProfileUploader";
+
+const ProfilePage: React.FC = () => {
+  const handleUpload = (file: File) => {
+    console.log("Uploaded file:", file);
+    // You can send this file to your backend API here
+  };
+
+  const handleRemove = () => {
+    console.log("Profile picture removed!");
+  };
+
+  return (
+    <div>
+      <h2>My Profile</h2>
+      <ProfileUploader
+        initialImage="" // You can pass an existing profile picture URL here
+        onUpload={handleUpload}
+        onRemove={handleRemove}
+        maxSizeMB={10}
+      />
+    </div>
+  );
+};
+
+export default ProfilePage;
