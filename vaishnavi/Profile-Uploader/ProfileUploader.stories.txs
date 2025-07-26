@@ -1,0 +1,42 @@
+import type { Meta, StoryObj } from "@storybook/react";
+import React from "react";
+import ProfileUploader from "./ProfileUploader";
+
+const meta: Meta<typeof ProfileUploader> = {
+  title: "Components/ProfileUploader",
+  component: ProfileUploader,
+  tags: ["autodocs"], // helps Storybook auto-generate docs
+};
+
+export default meta;
+type Story = StoryObj<typeof ProfileUploader>;
+
+/* 1. Default State (No Image Uploaded) */
+export const Default: Story = {
+  args: {
+    initialImage: "",
+    maxSizeMB: 10,
+  },
+};
+
+/*  2. With Preloaded Profile Image */
+export const WithInitialImage: Story = {
+  args: {
+    initialImage: "https://via.placeholder.com/50", // sample profile picture
+  },
+};
+
+/*  3. With Upload & Remove Actions */
+export const WithActions: Story = {
+  args: {
+    onUpload: (file) => alert(`Uploaded: ${file.name}`),
+    onRemove: () => alert("Profile picture removed!"),
+  },
+};
+
+/*  4. Custom Max File Size (e.g., 2MB limit) */
+export const CustomMaxSize: Story = {
+  args: {
+    maxSizeMB: 2,
+  },
+};
